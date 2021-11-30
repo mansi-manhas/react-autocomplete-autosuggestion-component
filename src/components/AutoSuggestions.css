@@ -1,0 +1,18 @@
+.wrapper {
+    margin: 20px;
+}
+
+.list {
+    border: 1px solid #999;
+    width: calc(300px + 1rem);
+    background-color: #e6e6e6;
+}
+
+.list-item {
+    border: 1px solid #999;
+    color: blue;
+}
+
+.list div:hover {
+    color: black;
+}
