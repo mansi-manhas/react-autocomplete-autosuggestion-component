@@ -22,7 +22,7 @@ The component is implemented in two ways:
 - This component calls the API based on the input given by the user.
 - The API accepts a query parameter `q` which holds the query's input value.
 - I am using [Reddit's Search API](https://www.reddit.com/search.json) for this component.
-- When items are being fetched, we should `loading` to the user.
+- When items are being fetched, we show `loading` message to the user.
 - Once the response comes from the API, all strings from the response are displayed in the list.
 - The strings are displayed in the same order they arrive from the API call.
 - In order to avoid sending too many requests i.e, we do not want to send requests on every keypress! 
