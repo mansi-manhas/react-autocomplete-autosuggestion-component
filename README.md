@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+## AutoComplete/AutoSuggestions React.js Components
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project implements a [React component](https://reactjs.org/docs/react-component.html) that basically renders a text input field with auto-completion.
 
-## Available Scripts
+The component is implemented in two ways:
 
-In the project directory, you can run:
+### #1 - [AutoComplete.js](https://github.com/mansi-manhas/react-autocomplete-autosuggestion-component/blob/main/src/components/AutoComplete.js) - Component Flow
+
+- This one is wrapper around the main `App` component.
+- The data is fetched from an API in the `App` component and is passed to `AutoComplete` component as `props`.
+- Entire data from the API is fetched all at once, and `AutoComplete` component filters the result.
+- I created a fake API using [mocki.io](https://mocki.io/fake-json-api) in order to populate my component with dummy data.
+- You can access the dummy data [here](https://mocki.io/v1/5fc88195-ea7a-40f1-a436-419142e3b4e1).
+
+### #1 - DEMO
+
+![](https://github.com/mansi-manhas/react-autocomplete-autosuggestion-component/blob/main/auto-completion.gif) 
+
+
+### #2 - [AutoSuggestions.js](https://github.com/mansi-manhas/react-autocomplete-autosuggestion-component/blob/main/src/components/AutoSuggestions.js) - Component Flow
+
+- This component calls the API based on the input given by the user.
+- The API accepts a query parameter `q` which holds the query's input value.
+- I am using [Reddit's Search API](https://www.reddit.com/search.json) for this component.
+- When items are being fetched, we should `loading` to the user.
+- Once the response comes from the API, all strings from the response are displayed in the list.
+- The strings are displayed in the same order they arrive from the API call.
+- In order to avoid sending too many requests i.e, we do not want to send requests on every keypress! 
+- So, we `debounce` the requests with a time-out of `500 ms`.
+- When items are being fetched, no request has been sent or endpoint has returned zero items, the component 
+  will not be re-rendered.
+  
+### #2 - DEMO
+
+![](https://github.com/mansi-manhas/react-autocomplete-autosuggestion-component/blob/main/auto-suggestions.gif)
+
+### Tech Stack
+
+- [React.js](https://reactjs.org/) for creating interactive and component based UIs.
+- [Node.js](https://nodejs.org/en/) for setting up the application environment.
+- [React Hooks](https://reactjs.org/docs/hooks-intro.html) for handling states and react features without creating a class.
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
